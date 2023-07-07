@@ -29,10 +29,10 @@
         <rosparam param="depth_image_topics">[/head_mount_kinect2/depth/image_raw]</rosparam>
         <rosparam param="depth_info_topics">[/head_mount_kinect2/depth/camera_info]</rosparam>
 
-        <rosparam param="selectedOnStartSimple">[5]</rosparam>
+        <rosparam param="selectedOnStartSimple">[3]</rosparam>
         <rosparam param="selectedOnStartComplex">[-1]</rosparam>
 
-        <rosparam param="selected_on_start_simple_objects">[5]</rosparam>
+        <rosparam param="selected_on_start_simple_objects">[3]</rosparam>
         <rosparam param="selected_on_start_complex_objects">[-1]</rosparam>
 
     </node>
