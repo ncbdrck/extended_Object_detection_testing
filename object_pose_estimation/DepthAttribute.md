@@ -12,12 +12,12 @@ https://github.com/Extended-Object-Detection-ROS/wiki_english/wiki/DepthAttribut
 ```
 
 So like the previous ones, we cannot use this independently. 
-We have to pair it up with different detect methods such as [Colour_Histograms](https://github.com/ncbdrck/MultiROS-Real/blob/main/ReactorX/object_pose_estimation/ColourHistograms.md) or [HSVColor](https://github.com/ncbdrck/MultiROS-Real/blob/main/ReactorX/object_pose_estimation/HSVColor.md) or the ones [available](https://github.com/Extended-Object-Detection-ROS/wiki_english/wiki/simpleobject_detection) in the [Extended-Object-Detection-ROS](https://github.com/Extended-Object-Detection-ROS) package.
+We have to pair it up with different detection methods such as [Colour_Histograms](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/ColourHistograms.md) or [HSVColor](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/HSVColor.md) or the ones [available](https://github.com/Extended-Object-Detection-ROS/wiki_english/wiki/simpleobject_detection) in the [Extended-Object-Detection-ROS](https://github.com/Extended-Object-Detection-ROS) package.
 
 We only use this to `Extract` **Depth** information from the detected image.
 
 
-**Note:** This the same code block as in the [Colour_Histograms](https://github.com/ncbdrck/MultiROS-Real/blob/main/ReactorX/object_pose_estimation/ColourHistograms.md) one.
+**Note:** This the same code block as in the [Colour_Histograms](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/ColourHistograms.md)) one.
 
 ```
 # Create a package to put the code
