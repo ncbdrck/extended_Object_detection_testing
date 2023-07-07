@@ -114,6 +114,9 @@ In the above code, we are using three methods to detect objects. I will update t
 
 **Note:** All the pose information we are getting is with respect to the `camera` frame. So we need to use additional code to convert it into the `world` or `base_link` frame
 
+
+## Sample code to get the pose with respect to the base or world frame
+
 ```
 from tf2_ros import Buffer
 from tf2_ros import TransformListener
@@ -205,7 +208,5 @@ def simple_object_detection_callback(msg):
             # Update the cube_pose attribute with the transformed pose
             cube_pose_vision = cube_position_wrt_base_frame  # point()
             # print("pose:", cube_position_wrt_base_frame)
-
-
 
 ```
