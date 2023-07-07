@@ -13,7 +13,7 @@ https://github.com/Extended-Object-Detection-ROS/wiki_english/wiki/HSVcolor
 
 Here, I'm using the code I used when I followed the **Construct ROS Perception in 5 Days** course. So to get started, We can try the following 
 
-**Note:** This the same code block as in the [Colour_Histograms](https://github.com/ncbdrck/MultiROS-Real/blob/main/ReactorX/object_pose_estimation/ColourHistograms.md) one.
+**Note:** This the same code block as in the [Colour_Histograms](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/ColourHistograms.md) one.
 
 ```
 # Create a package to put the code
@@ -25,7 +25,7 @@ roscd my_object_recognition_pkg/config/object_base_example
 touch Cube_Detect.xml
 ```
 
-Then we have to change the XML file
+Then we have to change the XML file.
 ```
 <?xml version="1.0" ?>
 
@@ -61,7 +61,7 @@ Then we have to change the XML file
 
 ## Extract the Attribute 
 
-Similar to the [Colour_Histograms](https://github.com/ncbdrck/MultiROS-Real/blob/main/ReactorX/object_pose_estimation/ColourHistograms.md), we don't have to manually enter the values for the **`"HSVColorCube_Red"`** Attribute. 
+Similar to the [Colour_Histograms](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/ColourHistograms.md), we don't have to manually enter the values for the **`"HSVColorCube_Red"`** Attribute. 
 
 For that, we need to create a place to save the Histogram yaml file and a launch file to launch the node. 
 
@@ -97,7 +97,7 @@ Then after launching the file, it will open a GUI. In that
 
 ## Detection
 
-To detect the cube, we can create another launch file
+To detect the cube, we can create another launch file.
 ```
 roscd my_object_recognition_pkg
 touch launch/cube_detection.launch
