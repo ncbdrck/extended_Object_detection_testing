@@ -17,7 +17,7 @@ We have to pair it up with different detection methods such as [Colour_Histogram
 We only use this to `Extract` **Depth** information from the detected image.
 
 
-**Note:** This the same code block as in the [Colour_Histograms](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/ColourHistograms.md)) one.
+**Note:** This the same code block as in the ([Colour_Histograms](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/ColourHistograms.md)) one.
 
 ```
 # Create a package to put the code
