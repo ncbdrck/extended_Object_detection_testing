@@ -1,0 +1,40 @@
+<launch>
+    <arg name="output" default="screen"/>
+    <arg name="objectBasePath" default="$(find my_object_recognition_pkg)/config/object_base_example/Simple_Gun.xml"/>
+
+    <node name="extended_object_detection" pkg="extended_object_detection" type="extended_object_detection_node" output="screen">
+
+        <param name="object_base" value="$(arg objectBasePath)"/>
+
+        <param name="videoProcessUpdateRate" value="5"/>
+        <param name="screenOutput" value="false"/>
+        <param name="publishImage" value="true"/>
+        <param name="publishMarkers" value="true"/>
+        <param name="subscribeDepth" value="true"/>
+        <param name="maxContourPoints" value="-1"/>
+
+        <param name="broadcast_tf" value="true"/>
+        <param name="rate_limit_sec" value="0.1"/>
+        <param name="allowed_lag_sec" value="0"/>
+        <param name="publish_image_output" value="true"/>
+        <param name="publish_markers" value="true"/>
+
+        <remap from="camera/image_raw" to="/head_mount_kinect2/rgb/image_raw"/>
+        <remap from="camera/info" to="/head_mount_kinect2/rgb/camera_info"/>
+        <remap from="depth/image_raw" to="/head_mount_kinect2/depth/image_raw"/>
+        <remap from="depth/info" to="/head_mount_kinect2/depth/camera_info"/>
+
+        <rosparam param="rgb_image_topics">[/head_mount_kinect2/rgb/image_raw]</rosparam>
+        <rosparam param="rgb_info_topics">[/head_mount_kinect2/rgb/camera_info]</rosparam>
+        <rosparam param="depth_image_topics">[/head_mount_kinect2/depth/image_raw]</rosparam>
+        <rosparam param="depth_info_topics">[/head_mount_kinect2/depth/camera_info]</rosparam>
+
+        <rosparam param="selectedOnStartSimple">[5]</rosparam>
+        <rosparam param="selectedOnStartComplex">[-1]</rosparam>
+
+        <rosparam param="selected_on_start_simple_objects">[5]</rosparam>
+        <rosparam param="selected_on_start_complex_objects">[-1]</rosparam>
+
+    </node>
+
+</launch>

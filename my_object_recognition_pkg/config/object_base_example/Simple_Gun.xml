@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+
+<AttributeLib>
+    <Attribute Name="HistColorCube_Red" Type="HistColor" Histogram="histograms/Cube_Red.yaml"/>
+    <Attribute Name="Cube_Red_Size" Type="Size" MinAreaPc="0.00" MaxAreaPc="100"/>
+    <Attribute Name="NotFractal" Type="Size" MinAreaPc="0.5" MaxAreaPc="100"/>
+
+    <Attribute Name="HSVColorCube_Red" Type="HSVColor" Hmin="0" Hmax="10" Smin="100" Smax="255" Vmin="100" Vmax="255"/>
+    <Attribute Name="HSVCube_Red_Size" Type="Size" MinAreaPc="0.01" MaxAreaPc="20"/>
+
+    <Attribute Name="Depth" Type="Depth" mode="3"/>
+
+    <Attribute Name="RoughDist" Type="RoughDist" realWidth="0.05" realHeight="0.05"/>
+
+<!--    <Attribute Name="SocialRobotsCover" Type="Feature" featureExtractorType="ORB" min_matches="50" height="0.08" sample_image="images/red_cube1.jpg"/>-->
+
+
+<!--    <Attribute Name="HaarGun" Type="HaarCascade" Cascade="gun_haar/classifier/cascade.xml"/>-->
+<!--    <Attribute Name="MyBlobAttribute" Type="Blob" minThreshold="54" maxThreshold="125" blobColor="0" minArea="1500" minCircularity="0.03" minConvexity="0.64" minInertiaRatio="0.00"/>-->
+
+</AttributeLib>
+
+<SimpleObjectBase>
+
+    <SimpleObject Name="Cube_Red_hist" ID="1">
+        <Attribute Type="Detect">HistColorCube_Red</Attribute>
+        <Attribute Type="Check">Cube_Red_Size</Attribute>
+<!--        <Attribute Type="Check">NotFractal</Attribute>-->
+    </SimpleObject>
+
+    <SimpleObject Name="Cube_Red_hsv" ID="2">
+        <Attribute Type="Detect">HSVColorCube_Red</Attribute>
+<!--        <Attribute Type="Check">NotFractal</Attribute>-->
+        <Attribute Type="Check">HSVCube_Red_Size</Attribute>
+    </SimpleObject>
+
+    <SimpleObject Name="Cube_Red_depth" ID="3">
+        <Attribute Type="Detect">HSVColorCube_Red</Attribute>
+<!--        <Attribute Type="Check">NotFractal</Attribute>-->
+        <Attribute Type="Check">HSVCube_Red_Size</Attribute>
+        <Attribute Type="Extract" Channel="DEPTH">Depth</Attribute>
+    </SimpleObject>
+
+    <SimpleObject Name="Cube_Red_RoughDist" ID="4">
+        <Attribute Type="Detect">HistColorCube_Red</Attribute>
+        <Attribute Type="Check">HSVCube_Red_Size</Attribute>
+        <Attribute Type="Extract">RoughDist</Attribute>
+    </SimpleObject>
+
+<!--    not working -->
+<!--    <SimpleObject Name="Cube_red_image" ID="5">-->
+<!--        <Attribute Type="Detect">SocialRobotsCover</Attribute>-->
+<!--        <Attribute Type="Check">HSVCube_Red_Size</Attribute>-->
+<!--    </SimpleObject>-->
+
+<!--    <SimpleObject Name="HaarBlackGun" ID="3" Mode="Hard" MergingPolicy="Union">-->
+<!--        <Attribute Type="Detect">HaarGun</Attribute>-->
+<!--        <Attribute Type="Detect">MyBlobAttribute</Attribute>-->
+<!--    </SimpleObject>-->
+
+</SimpleObjectBase>
+
+
+<RelationLib>
+
+
+
+</RelationLib>
+
+
+<ComplexObjectBase>
+
+
+</ComplexObjectBase>
