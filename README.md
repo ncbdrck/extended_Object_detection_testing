@@ -97,7 +97,7 @@ There are several methods to do object recognition from this package. But all of
 
 
 **Note:** 
-- Here, we changed the "selected_on_start_simple_objects" and selectedOnStartSimple" to `[3]` so it will only print out the third ID pose. 
+- Here, we changed the "selected_on_start_simple_objects" and selectedOnStartSimple" to `[3]` so it will only print out the third ID pose. Find the launch file [here](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/my_object_recognition_pkg/launch/gun_detection.launch)
 - If you want it to detect multiple, we can add an array like `[1,3,4]`. This will select only detect the objects that are with IDs 1,3 and 4.
 - If you leave it empty `[]`, it will detect all the listed objects
 - With `[-1]`, it will detect none
