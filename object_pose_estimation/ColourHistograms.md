@@ -59,14 +59,14 @@ Then we have to change the XML file
 
 ```
 **Note**
-- Here, you don't need the "Cube_Red_Size" and "NotFractal". We don't even need to use "NotFractal (Size)" since it gives an error in my code. That's the reason for the comment on that line. (The construct pople used it to filter out Fractal objects)
+- Here, you don't need the "Cube_Red_Size" and "NotFractal". We don't even need to use "NotFractal (Size)" since it gives an error in my code. That's the reason for the comment on that line. (The construct people used it to filter out Fractal objects)
 - We use the "Cube_Red_Size" to filter out larger and smaller objects
 
 ## Extract the Attribute 
 
 In the above XML file, we don't have to manually enter the values for the **`"HistColorCube_Red"`** Attribute. We can use the node provided by the same package to find it out. 
 
-For that, we need to create a place to save the Histogram yaml file and a launch file to launch the node 
+For that, we need to create a place to save the Histogram yaml file and a launch file to launch the node. 
 
 ```
 roscd my_object_recognition_pkg/config/object_base_example
