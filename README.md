@@ -118,6 +118,7 @@ In the above code, we are using three methods to detect objects. I will update t
 ## Sample code to get the pose with respect to the base or world frame
 
 ```
+import rospy
 from tf2_ros import Buffer
 from tf2_ros import TransformListener
 from extended_object_detection.msg import SimpleObjectArray, BaseObject
