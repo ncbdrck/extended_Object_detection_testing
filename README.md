@@ -113,3 +113,99 @@ In the above code, we are using three methods to detect objects. I will update t
 | [Depth](https://github.com/ncbdrck/extended_Object_detection_testing/blob/main/object_pose_estimation/DepthAttribute.md)             |  ✔️       | ✔️        | ✖️    |
 
 **Note:** All the pose information we are getting is with respect to the `camera` frame. So we need to use additional code to convert it into the `world` or `base_link` frame
+
+```
+from tf2_ros import Buffer
+from tf2_ros import TransformListener
+from extended_object_detection.msg import SimpleObjectArray, BaseObject
+from tf2_geometry_msgs import PoseStamped
+from geometry_msgs.msg import Point
+
+simple_object_detection_sub = rospy.Subscriber('/extended_object_detection/simple_objects',
+                                                            SimpleObjectArray, simple_object_detection_callback)
+
+tf_buffer = Buffer()
+listener = TransformListener(tf_buffer)
+to_frame = "rx200/base_link"
+
+cube_pose_vision = Point()
+
+
+def transform_between_frames(input_pose_point, input_frame, output_frame):
+    """
+    This function transforms a pose from one frame of reference to another using tf2
+
+    Args:
+    - input_pose_point: a Point() object representing the pose to be transformed
+    - input_frame: a string representing the frame of reference of the input pose
+    - output_frame: a string representing the desired frame of reference for the output pose
+
+    Returns:
+    - a Point() object representing the transformed pose
+    """
+
+    # Create a PoseStamped object with the input pose and frame of reference
+    input_pose_stamped = PoseStamped()
+    input_pose_stamped.pose.position = input_pose_point
+    input_pose_stamped.header.frame_id = input_frame
+    input_pose_stamped.header.stamp = rospy.Time.now()
+
+    # Use the tf_buffer to transform the input pose to the desired output frame of reference
+    output_pose = tf_buffer.transform(input_pose_stamped, output_frame, rospy.Duration(1))
+
+    return output_pose.pose.position
+
+def simple_object_detection_callback(msg):
+    """
+    Callback function for the extended object detection - simple_objects
+
+    Args:
+    - msg: a DetectedObjectArray message containing information about detected objects
+
+    This function updates the cube_pose_vision var with the position of the detected cube with respect to the
+    robot_base.
+
+    Returns:
+    - None
+    """
+
+    # Get the frame of reference of the camera
+    frame_id = msg.header.frame_id
+    # print("frame_id:", frame_id)
+
+    # Get the number of detected objects
+    total_detected_objects = len(msg.objects)  # This will be one since we are only set to detect one in the launch
+
+    # Iterate through the detected object
+    for i in range(total_detected_objects):
+        # Get the object ID, name, and confidence score
+        object_id = msg.objects[i].type_id  # We are only looking for item [3] in the xml and launch file
+        object_name = msg.objects[i].type_name  # name is "Cube_Red_depth"
+        object_confidence_score = msg.objects[i].score
+
+        # Get the pose of the detected object
+        object_pose = Pose()
+        object_pose.position.x = msg.objects[i].transform.translation.x
+        object_pose.position.y = msg.objects[i].transform.translation.y
+        object_pose.position.z = msg.objects[i].transform.translation.z
+        object_pose.orientation.x = msg.objects[i].transform.rotation.x
+        object_pose.orientation.y = msg.objects[i].transform.rotation.y
+        object_pose.orientation.z = msg.objects[i].transform.rotation.z
+        object_pose.orientation.w = msg.objects[i].transform.rotation.w
+
+        # not needed since we are detecting one attribute
+        if object_name == "Cube_Red_depth":
+
+            # Transform the pose of the detected object to the base frame of reference
+            # Unfortunately, this algo doesn't detect the rpy. So we only used position
+            cube_position_camera_frame = object_pose.position
+            cube_position_wrt_base_frame = transform_between_frames(cube_position_camera_frame, frame_id,
+                                                                         to_frame)
+
+            # Update the cube_pose attribute with the transformed pose
+            cube_pose_vision = cube_position_wrt_base_frame  # point()
+            # print("pose:", cube_position_wrt_base_frame)
+
+
+
+```
