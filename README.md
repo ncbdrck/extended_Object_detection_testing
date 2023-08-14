@@ -22,9 +22,9 @@ https://github.com/Extended-Object-Detection-ROS/wiki_english/wiki/complexobject
 
 **Note**
 
-- In our code pick and place project, we can get by with simple object detection since we are trying to capture the pose and rpy of a cube.
-- But for more complex tasks, we first identify each shape as a simple object and use them to create large objects. (e.g.: a dog holding a bone.) 
-- We first detect the dog and bone as simple objects. Then using those two, we find if they make up the complex object)
+- In our code (pick and place project), we can get by with simple object detection since we are trying to capture the pose and rpy of a cube.
+- But for more complex tasks, we first identify each shape as a simple object and use them to create large objects. (e.g., a dog holding a bone.) 
+- We first detect the dog and bone as simple objects. Then using those two, we find if they make up the complex object
 
 
 ## Getting started
